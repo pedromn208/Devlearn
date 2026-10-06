@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="login.css">
+
+    <title>Cadastro - DevLearn</title>
+
+</head>
+
+<body>
+
+    <div class="caixa-login">
+
+        <h1 class="logo">
+            Dev<span>Learn</span>
+        </h1>
+
+        <p class="subtitulo">
+            Crie sua conta para começar a aprender.
+        </p>
+
+
+        <form id="formCadastro">
+
+            <div class="grupo-campo">
+
+                <label for="nome">
+                    Nome
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Digite seu nome"
+                    required
+                >
+
+            </div>
+
+
+            <div class="grupo-campo">
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                >
+
+            </div>
+
+
+            <div class="grupo-campo">
+
+                <label for="senha">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="botao-login"
+            >
+                Criar conta
+            </button>
+
+        </form>
+
+
+        <p
+            id="mensagem"
+            class="mensagem"
+        ></p>
+
+
+        <p class="cadastro">
+            Já possui uma conta?
+            <a href="login.html">Entrar</a>
+        </p>
+
+    </div>
+
+
+    <script>
+
+        const formulario =
+            document.getElementById("formCadastro");
+
+        const mensagem =
+            document.getElementById("mensagem");
+
+
+        formulario.addEventListener(
+            "submit",
+            async (evento) => {
+
+                evento.preventDefault();
+
+
+                const nome =
+                    document.getElementById("nome").value;
+
+                const email =
+                    document.getElementById("email").value;
+
+                const senha =
+                    document.getElementById("senha").value;
+
+
+                const resposta =
+                    await fetch("/api/cadastro", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            nome,
+                            email,
+                            senha
+                        })
+
+                    });
+
+
+                const dados =
+                    await resposta.json();
+
+
+                if (resposta.ok) {
+
+                    mensagem.textContent =
+                        dados.mensagem;
+
+                    formulario.reset();
+
+                } else {
+
+                    mensagem.textContent =
+                        dados.erro;
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
