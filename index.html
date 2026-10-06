@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Conecta o arquivo CSS responsável pela estilização da página -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <title>DevLearn</title>
+</head>
+
+<body>
+
+    <!-- Área do usuário -->
+    <div class="area-usuario">
+        <span id="nomeUsuario">Carregando...</span>
+        <button onclick="sair()">Sair</button>
+    </div>
+
+    <p class="p1">🚀 Aprenda Desenvolvimento Web com IA</p>
+
+    <h1>
+        Crie sites e aprenda
+        <br>
+        <span>como eles funcionam.</span>
+    </h1>
+
+    <p class="p2">
+        Crie páginas com IA e aprenda, de forma simples,
+        como HTML e CSS dão vida ao seu site.
+    </p>
+
+    <div class="caixa-entrada">
+
+        <textarea
+            class="texto-pagina"
+            placeholder="Descreva o site que você quer criar. Ex: um site para uma banda ou um site de esportes..."
+        ></textarea>
+
+        <button class="botao-gerar" onclick="gerarCodigo()">
+            Gerar site
+        </button>
+
+    </div>
+
+    <!-- Botão que inicia o processo de geração do código utilizando a inteligência artificial -->
+
+    <div class="caixa-resultado">
+
+        <p class="bloco-codigo"></p>
+
+        <iframe class="bloco-site"></iframe>
+
+    </div>
+
+    <div class="caixa-explicação">
+
+        <button
+            class="botao-explicacao"
+            onclick="explicarCodigo()"
+            disabled
+        >
+            💡 Explicar código
+        </button>
+
+        <h2>📚 Entenda o código</h2>
+
+        <div class="texto-explicacao">
+            Gere um site primeiro e depois clique em
+            "Explicar código" para aprender como ele funciona.
+        </div>
+
+    </div>
+
+    <script src="scripts.js"></script>
+
+    <script>
+
+        // Busca os dados do usuário logado
+        async function carregarUsuario() {
+
+            try {
+
+                const resposta = await fetch("/api/usuario");
+
+                if (!resposta.ok) {
+                    window.location.href = "login.html";
+                    return;
+                }
+
+                const dados = await resposta.json();
+
+                document.getElementById("nomeUsuario").textContent =
+                    "Olá, " + dados.usuario.nome + "!";
+
+            } catch (erro) {
+
+                console.error("Erro ao verificar usuário:", erro);
+                window.location.href = "login.html";
+
+            }
+        }
+
+
+        // Faz logout
+        async function sair() {
+
+            try {
+
+                const resposta = await fetch("/api/logout");
+
+                if (resposta.ok) {
+                    window.location.href = "login.html";
+                }
+
+            } catch (erro) {
+
+                console.error("Erro ao sair:", erro);
+
+            }
+
+        }
+
+
+        // Carrega o usuário quando a página abrir
+        carregarUsuario();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+
+/* Define a fonte utilizada pela aplicação */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+
+/* Define a aparência geral da página */
+body {
+    background: #09090b;
+    color: #fafafa;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Área do usuário */
+.area-usuario {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    color: #00cb5b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* Botão de sair */
+.area-usuario button {
+    width: auto;
+    padding: 9px 16px;
+
+    background-color: #00cb5b;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+
+.area-usuario button:hover {
+    background-color: #00b950;
+    transform: translateY(-1px);
+}
+
+
+/* Estiliza o paragrafo 1 */
+.p1 {
+    color: #ffffff;
+}
+
+
+/* Estiliza o título principal */
+h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #fafafa;
+    text-align: center;
+}
+
+
+/* Destaca parte do título */
+span {
+    color: #00cb5b;
+}
+
+
+/* Estiliza o texto de orientação abaixo do título */
+.p2 {
+    color: #58585b;
+    margin-top: 16px;
+    font-size: 18px;
+}
+
+
+/* Cria a caixa onde o usuário insere o prompt */
+.caixa-entrada {
+    width: 620px;
+    background: #141419;
+    border-radius: 16px;
+    padding: 12px;
+    margin-top: 30px;
+}
+
+
+/* Configura o campo utilizado para escrever o prompt */
+textarea {
+    width: 80%;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 8px;
+    color: #fafafa;
+    font-size: 15px;
+    border: none;
+    display: flex;
+}
+
+
+/* Estiliza o botão responsável por iniciar a geração */
+button {
+    width: 20%;
+    padding: 10px 24px;
+    color: #ffffff;
+    background-color: #00cb5b;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+/* Organiza a área que apresenta o código e a prévia do site */
+.caixa-resultado {
+    width: 1400px;
+    display: flex;
+    padding: 24px;
+    margin-top: 40px;
+    background: #111114;
+    border-radius: 12px;
+    border: 1px solid #27272a;
+    gap: 24px;
+}
+
+
+/* Área destinada à apresentação do código gerado */
+.bloco-codigo {
+    width: 30%;
+    background: #0c0c0f;
+    padding: 20px;
+    font-size: 12px;
+    color: #00cb5b;
+    white-space: pre-wrap;
+    overflow: auto;
+    height: 600px;
+    border-radius: 12px;
+    border: 1px solid #27272a;
+}
+
+
+/* Área responsável por mostrar a página gerada */
+.bloco-site {
+    width: 70%;
+    height: 600px;
+    border-radius: 12px;
+    border: 1px solid #27272a;
+    background-color: #1e1e1e;
+}
+
+
+/* Área de explicação do código */
+.caixa-explicação {
+    width: 1400px;
+    margin-top: 30px;
+    padding: 30px;
+    background: #111114;
+    border-radius: 12px;
+    border: 1px solid #27272a;
+}
+
+
+.botao-explicacao {
+    width: auto;
+    padding: 12px 24px;
+    margin-bottom: 25px;
+    background-color: #00cb5b;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+
+.botao-explicacao:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+.caixa-explicação h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+
+.texto-explicacao {
+    min-height: 150px;
+    padding: 25px;
+    background: #0c0c0f;
+    border: 1px solid #27272a;
+    border-radius: 12px;
+    color: #d4d4d8;
+    font-size: 16px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow: auto;
+}
+
+
+/* Ajustes para telas menores */
+@media (max-width: 700px) {
+
+    .area-usuario {
+        position: static;
+
+        width: 100%;
+        justify-content: flex-end;
+
+        margin-bottom: 25px;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .caixa-entrada {
+        width: 100%;
+    }
+
+}
