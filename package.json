@@ -4,6 +4,8 @@
   "description": "",
   "main": "scripts.js",
   "scripts": {
+    "start": "node server.js",
+    "build": "npm install --build-from-source sqlite3@5.1.7",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
